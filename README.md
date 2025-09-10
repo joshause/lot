@@ -2,7 +2,7 @@
 **A reproducible PyTorch / Lightning framework for investigating synchronized-phase attention.**
 
 ## 1. Introduction
-**Lattice Oscillator Transformer (LOT)** is a framework for investigating **synchronized phase attention**. It is a fusion of ideas from condensed matter physics, neuroscience, and machine learning that incorporates the collective dynamics of **coupled oscillators** and **phase coherence** in a Transformer neural network architecture.
+**Lattice Oscillator Transformer (LOT)** is both a framework for investigating **synchronized phase attention** and the proving ground for a new synchronized phase attention transformer that is a fusion of ideas from condensed matter physics, neuroscience, and machine learning that incorporates the collective dynamics of **coupled oscillators** and **phase coherence** in a Transformer neural network architecture.
 
 Standard Transformer heads are independent computational units.
 LOT arranges heads on a 2-D lattice whose dynamics follow a [**Kuramoto oscillator model**](https://en.wikipedia.org/wiki/Kuramoto_model):
@@ -276,13 +276,13 @@ plot_delimiter_wave(logdir="runs/cr_lattice/version_0/", step=1000)
 [x] Evaluation script uses same preprocessing & vocab
 
 
-## 11. Performance Notes
-| Model | params | enwik8 1 epoch | 1×A100 | sync overhead |
+## 11. Performance Notes (example/template)
+| Model | params | {dataset} 1 epoch | {n}×{gpu|cpu:name} | sync overhead |
 | -------- | ------- | ------- |  ------- |  ------- |
-| LoT-char (256d, 8 heads) | 90M | 0.97 bpc |  3 h 50 m | +7 % vs vanilla |
-| Vanilla-char (256d, 8 heads) | 90M | 0.98 bpc |  3 h 35 m | - |
+| LOT-{dataset} (256d, 8 heads) | 10M | 0.97 bpc |  3 h 50 m | +7 % vs vanilla |
+| vanilla-{dataset} (256d, 8 heads) | 10M | 0.98 bpc |  3 h 35 m | - |
 
-(Example run; exact numbers depend on CUDA kernel usage.)
+(Example run; exact numbers depend on CUDA kernel or CPU usage.)
 
 ## 12. Contributing
 
