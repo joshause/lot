@@ -1,0 +1,33 @@
+# Reproducible seed
+seed: 42
+
+# Data
+data:
+  vocab_size: 1000
+  seq_len: 128
+  n_samples: 10_000
+
+# Model
+model:
+  attn_type: lattice        # swap to "vanilla" for baseline
+  vocab_size: 1000
+  max_seq_len: 128
+  embed_dim: 256
+  num_heads: 8
+  num_layers: 6
+  mlp_ratio: 4
+  dropout: 0.1
+  lattice_shape: [2, 4]     # 2×4=8 heads
+  init_freq_range: [0.9, 1.1]
+
+# Training
+train_batch_size: 128
+val_batch_size: 256
+max_epochs: 5
+lr: 3e-4
+weight_decay: 0.01
+lambda_sync: 0.02
+lambda_diversity: 0.01
+
+# Eval
+eval_batch_size: 256

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lot"
+version = "0.1.0"
+description = "Lattice Oscillator Transformer"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.1",
+    "pytorch-lightning>=2.1",
+    "numpy<2",
+    "jsonargparse>=4.0",
+    "PyYAML",
+    "tensorboard",
+]
+
+[tool.setuptools]
+packages = ["lot"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev = ["black", "isort", "mypy"]
+
+[project.scripts]
+lot-train = "lot.cli.train:main"
+lot-eval  = "lot.cli.eval:main"
+lot-export = "lot.cli.export:main"
