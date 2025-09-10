@@ -1,5 +1,4 @@
 # Lattice Oscillator Transformer (LOT)
-**A reproducible PyTorch / Lightning framework for investigating synchronized-phase attention.**
 
 ## 1. Introduction
 **Lattice Oscillator Transformer (LOT)** is both a framework for investigating **synchronized phase attention** and the proving ground for a new synchronized phase attention transformer that is a fusion of ideas from condensed matter physics, neuroscience, and machine learning that incorporates the collective dynamics of **coupled oscillators** and **phase coherence** in a Transformer neural network architecture.
