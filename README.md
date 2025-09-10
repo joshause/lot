@@ -1,7 +1,7 @@
 # Lattice Oscillator Transformer (LOT)
 
 ## 1. Introduction
-**Lattice Oscillator Transformer (LOT)** is both a framework for investigating **synchronized phase attention** and the proving ground for a new synchronized phase attention transformer that is a fusion of ideas from condensed matter physics, neuroscience, and machine learning that incorporates the collective dynamics of **coupled oscillators** and **phase coherence** in a Transformer neural network architecture.
+**Lattice Oscillator Transformer (LOT)** is both a framework for investigating **synchronized phase attention** and a Kuramato phase attention Transformer proof of concept It is a fusion of ideas from condensed matter physics, neuroscience, and machine learning that incorporates the collective dynamics of **coupled oscillators** and **phase coherence** in a Transformer neural network architecture.
 
 Standard Transformer heads are independent computational units.
 LOT arranges heads on a 2-D lattice whose dynamics follow a [**Kuramoto oscillator model**](https://en.wikipedia.org/wiki/Kuramoto_model):
@@ -62,14 +62,6 @@ python setup.py build_ext --inplace
 ```
 
 ## 4. Train & Evaluate & Export
-
-Ensure that cli components are locally executable:
-
-```
-chmod +x lot/cli/train.py
-chmod +x lot/cli/eval.py
-chmod +x lot/cli/export.py
-```
 
 ### 4.1 Copy-Reverse benchmark (included)
 
