@@ -268,7 +268,7 @@ plot_delimiter_wave(logdir="runs/cr_lattice/version_0/", step=1000)
 
 
 ## 11. Performance Notes (example/template)
-| Model | params | {dataset} 1 epoch | {n}×{gpu|cpu:name} | sync overhead |
+| Model | params | {dataset} 1 epoch | {n}×{gpu/cpu:name} | sync overhead |
 | -------- | ------- | ------- |  ------- |  ------- |
 | LOT-{dataset} (256d, 8 heads) | 10M | 0.97 bpc |  3 h 50 m | +7 % vs vanilla |
 | vanilla-{dataset} (256d, 8 heads) | 10M | 0.98 bpc |  3 h 35 m | - |
