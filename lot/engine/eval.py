@@ -3,8 +3,7 @@ import json
 import pathlib
 import torch
 from torch.utils.data import DataLoader
-from lot.model.transformer import Transformer
-
+import torch.nn.functional as F
 
 def evaluate(checkpoint_path: pathlib.Path,
               data: DataLoader,
