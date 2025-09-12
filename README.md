@@ -104,12 +104,13 @@ Output (metrics.json):
 
 ```
 lot-export runs/cr_lattice/version_0/checkpoint.pt \
-        --config experiments/copy_reverse.yaml \
-        --format onnx \
-        --output my_model.onnx
+    --config experiments/copy_reverse.yaml \
+    --output model.onnx \
+    --seq-len 128 \
+    --opset 14
 ```
 
-Produces my_model.onnx (or my_model.ts.pt) ready for deployment / inference servers.
+Produces model.onnx ready for deployment / inference servers.
 
 ### 4.2 Character-level language modelling (example/suggestion)
 lot-train --config experiments/enwik8_char.yaml   # 90 M params, 1 epoch ≈ 4 h on 1×A100
