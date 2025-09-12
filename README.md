@@ -32,12 +32,11 @@ lot/
 ├── experiments/         # YAML configs (seed, model, training schedule)
 ├── tests/               # pytest unit & regression tests
 ├── scripts/             # CLI entry points
-├── csrc/                # optional CUDA kernels (build with python setup.py build_ext)
 ```
 
 ## 3. Setup
 Requirements: Python ≥ 3.9, PyTorch ≥ 2.1, pytorch-lightning ≥ 2.1
-(works on CPU, but GPU recommended)
+(works on CPU)
 
 ```
 git clone https://github.com/joshause/lot.git
@@ -53,12 +52,6 @@ Ensure that cli components are locally executable:
 chmod +x lot/cli/train.py
 chmod +x lot/cli/eval.py
 chmod +x lot/cli/export.py
-```
-
-Build CUDA kernels (**OPTIONAL+UNTESTED, requires nvcc**):
-
-```
-python setup.py build_ext --inplace
 ```
 
 ## 4. Train & Evaluate & Export
@@ -211,26 +204,6 @@ ATTENTION_REGISTRY = {
 
 Use in YAML: attn_type: my_attn.
 
-### 8.2 Custom CUDA kernel
-
-Place my_kernel.cu in csrc/, include header:
-
-```
-torch::Tensor my_kernel(torch::Tensor phase, ...);
-PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
-    m.def("my_kernel", &my_kernel, "...");
-}
-```
-
-Python side:
-
-```
-from torch.utils.cpp_extension import load
-my_ext = load(name="my_ext", sources=["csrc/my_kernel.cu"], verbose=True)
-```
-
-Call inside components.py - fallback to PyTorch if not compiled.
-
 ## 9. Monitoring & Visualisation
 
 Lightning logs **automatically**:
@@ -268,12 +241,12 @@ plot_delimiter_wave(logdir="runs/cr_lattice/version_0/", step=1000)
 
 
 ## 11. Performance Notes (example/template)
-| Model | params | {dataset} 1 epoch | {n}×{gpu/cpu:name} | sync overhead |
+| Model | params | {dataset} 1 epoch | {n}×{cpu:name} | sync overhead |
 | -------- | ------- | ------- |  ------- |  ------- |
 | LOT-{dataset} (256d, 8 heads) | 10M | 0.97 bpc |  3 h 50 m | +7 % vs vanilla |
 | vanilla-{dataset} (256d, 8 heads) | 10M | 0.98 bpc |  3 h 35 m | - |
 
-(Example run; exact numbers depend on CUDA kernel or CPU usage.)
+(Example run; exact numbers depend on CPU usage.)
 
 ## 12. Contributing
 
@@ -283,7 +256,7 @@ Project git-flow model:
 
 2. Add unit tests (pytest tests/) & update docs
 
-3. Open PR -> CI must pass (lint, type-check, GPU tests on copy-reverse ≤ 10 min)
+3. Open PR -> CI must pass (lint, type-check, CPU tests on copy-reverse ≤ 10 min)
 
 4. Tag maintainer for review
 
